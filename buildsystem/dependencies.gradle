@@ -1,105 +1,74 @@
 allprojects {
-  repositories {
-    jcenter()
-  }
+    repositories {
+        jcenter()
+    }
 }
 
 ext {
 
-  // App
-  appVersionCode = 1
-  appVersionName= "1.0"
+    // App
+    appVersionCode = 1
+    appVersionName = "1.0"
 
-  //Android
-  androidBuildToolsVersion = "25.0.2"
-  androidMinSdkVersion = 16
-  androidTargetSdkVersion = 25
-  androidCompileSdkVersion = 25
+    //Android
+    androidBuildToolsVersion = "25.0.2"
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 25
+    androidCompileSdkVersion = 25
+
+    // Android Libraries
+    supportLibraryVersion = '25.2.0'
+
+    //Libraries
+    daggerVersion = '2.10-rc2'
+    rxJavaVersion = '2.0.2'
+    retrofitVersion = '2.2.0'
+    okHttpVersion = '2.5.0'
+    androidAnnotationsVersion = '21.0.3'
+    arrowVersion = '1.0.0'
+
+    //Testing
+    robolectricVersion = '3.1.1'
+    jUnitVersion = '4.12'
+    assertJVersion = '1.7.1'
+    mockitoVersion = '1.9.5'
+    dexmakerVersion = '1.0'
+    espressoVersion = '2.0'
+    testingSupportLibVersion = '0.1'
+
+    //Development
+    leakCanaryVersion = '1.3.1'
+
+    appDependencies = [
+            appCompact         : "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            supportLib         : "com.android.support:support-v4:${supportLibraryVersion}",
+            supportDesign      : "com.android.support:design:${supportLibraryVersion}",
+            recyclerView       : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            dagger             : "com.google.dagger:dagger:${daggerVersion}",
+            annotationProcessor: "com.google.dagger:dagger-compiler:${daggerVersion}",
+            retrofit           : "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    ]
+
+    appTestDependencies = [
+            mockito          : "org.mockito:mockito-core:${mockitoVersion}",
+            dexmaker         : "com.google.dexmaker:dexmaker:${dexmakerVersion}",
+            dexmakerMockito  : "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
+            espresso         : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            testingSupportLib: "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
+    ]
+
+    domainDependencies = [
+            rxJava         : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+    ]
+
+    domainTestDependencies = [
+            junit  : "junit:junit:${jUnitVersion}",
+            mockito: "org.mockito:mockito-core:${mockitoVersion}",
+            assertj: "org.assertj:assertj-core:${assertJVersion}"
+    ]
 
 
-
-  // Android Libraries
-  supportLibraryVersion = '25.2.0'
-
-  //Libraries
-  daggerVersion = '2.8'
-  butterKnifeVersion = '7.0.1'
-  recyclerViewVersion = '21.0.3'
-  rxJavaVersion = '2.0.2'
-  rxAndroidVersion = '2.0.1'
-  javaxAnnotationVersion = '1.0'
-  javaxInjectVersion = '1'
-  gsonVersion = '2.3'
-  okHttpVersion = '2.5.0'
-  androidAnnotationsVersion = '21.0.3'
-  arrowVersion = '1.0.0'
-
-  //Testing
-  robolectricVersion = '3.1.1'
-  jUnitVersion = '4.12'
-  assertJVersion = '1.7.1'
-  mockitoVersion = '1.9.5'
-  dexmakerVersion = '1.0'
-  espressoVersion = '2.0'
-  testingSupportLibVersion = '0.1'
-
-  //Development
-  leakCanaryVersion = '1.3.1'
-
-  appDependencies = [
-          appCompact: "com.android.support:appcompat-v7:${supportLibraryVersion}",
-          supportLib: "com.android.support:support-v4:${supportLibraryVersion}",
-          supportDesign: "com.android.support:design:${supportLibraryVersion}",
-          recyclerView: "com.android.support:recyclerview-v7:${supportLibraryVersion}"
-//      daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-//      dagger:             "com.google.dagger:dagger:${daggerVersion}",
-//      butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
-//      recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
-//      rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-//      rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-//      javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}"
-  ]
-
-  presentationTestDependencies = [
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-      dexmaker:           "com.google.dexmaker:dexmaker:${dexmakerVersion}",
-      dexmakerMockito:    "com.google.dexmaker:dexmaker-mockito:${dexmakerVersion}",
-      espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
-      testingSupportLib:  "com.android.support.test:testing-support-lib:${testingSupportLibVersion}",
-  ]
-
-  domainDependencies = [
-      javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
-      rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-  ]
-
-  domainTestDependencies = [
-      junit:              "junit:junit:${jUnitVersion}",
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-      assertj:            "org.assertj:assertj-core:${assertJVersion}"
-  ]
-
-  dataDependencies = [
-      daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
-      dagger:             "com.google.dagger:dagger:${daggerVersion}",
-      okHttp:             "com.squareup.okhttp:okhttp:${okHttpVersion}",
-      gson:               "com.google.code.gson:gson:${gsonVersion}",
-      rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-      rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
-      javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
-      javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
-      androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}"
-  ]
-
-  dataTestDependencies = [
-      junit:              "junit:junit:${jUnitVersion}",
-      assertj:            "org.assertj:assertj-core:${assertJVersion}",
-      mockito:            "org.mockito:mockito-core:${mockitoVersion}",
-      robolectric:        "org.robolectric:robolectric:${robolectricVersion}",
-  ]
-
-  developmentDependencies = [
-      leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
-  ]
+    developmentDependencies = [
+            leakCanary: "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+    ]
 }

@@ -1,4 +1,4 @@
 package com.example.data.entity;
 
-public class MyClass {
+public class BusinessInfo {
 }

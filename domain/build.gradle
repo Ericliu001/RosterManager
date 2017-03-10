@@ -1,7 +1,10 @@
 apply plugin: 'java'
 
 dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile domainDependencies.rxJava
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
 }
 
 sourceCompatibility = "1.7"

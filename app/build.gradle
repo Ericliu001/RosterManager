@@ -29,6 +29,10 @@ dependencies {
     compile appDependencies.recyclerView
     compile appDependencies.supportDesign
 
+    compile appDependencies.dagger
+    annotationProcessor appDependencies.annotationProcessor
+    compile appDependencies.retrofit
+
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
