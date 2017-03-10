@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
+
+import javax.inject.Inject;
 
 /**
  * An activity representing a single Item detail screen. This
@@ -16,7 +20,10 @@ import android.view.MenuItem;
  * item details are presented side-by-side with a list of items
  * in a {@link ItemListActivity}.
  */
-public class ItemDetailActivity extends AppCompatActivity {
+public class ItemDetailActivity extends BaseActivity {
+
+    @Inject
+    BusinessInfoService businessInfoService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +40,10 @@ public class ItemDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        if (businessInfoService != null) {
+            Log.d("eric", businessInfoService.toString());
+        }
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();

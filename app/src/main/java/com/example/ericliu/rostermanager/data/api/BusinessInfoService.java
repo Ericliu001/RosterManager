@@ -6,7 +6,7 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 
-import static com.example.ericliu.rostermanager.data.api.ApiModule.AUTH_SHA1;
+import static com.example.ericliu.rostermanager.dagger.ApiModule.AUTH_SHA1;
 
 /**
  * Created by ericliu on 10/3/17.

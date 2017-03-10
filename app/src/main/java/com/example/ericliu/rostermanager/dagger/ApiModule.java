@@ -1,4 +1,6 @@
-package com.example.ericliu.rostermanager.data.api;
+package com.example.ericliu.rostermanager.dagger;
+
+import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 
 import javax.inject.Singleton;
 
@@ -13,7 +15,7 @@ import retrofit2.Retrofit;
 
 @Module
 public final class ApiModule {
-    public static final HttpUrl PRODUCTION_API_URL = HttpUrl.parse("https://apjoqdqpi3.execute-api.us-west-2.amazonaws.com/dmc");
+    public static final HttpUrl PRODUCTION_API_URL = HttpUrl.parse("https://apjoqdqpi3.execute-api.us-west-2.amazonaws.com/dmc/");
     public static final String AUTH_SHA1 = "96f164ad4d9b2b0dacf8ebee2bb1eeb3aa69adf1";
 
     @Provides
@@ -25,10 +27,12 @@ public final class ApiModule {
     @Provides @Singleton
     Retrofit provideRetrofit() {
         return new Retrofit.Builder() //
+                .baseUrl(PRODUCTION_API_URL)
                 .build();
     }
 
-    @Provides @Singleton BusinessInfoService provideBusinessInfoService(Retrofit retrofit) {
+    @Provides @Singleton
+    BusinessInfoService provideBusinessInfoService(Retrofit retrofit) {
         return retrofit.create(BusinessInfoService.class);
     }
 
