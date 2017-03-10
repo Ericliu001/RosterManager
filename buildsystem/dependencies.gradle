@@ -5,11 +5,18 @@ allprojects {
 }
 
 ext {
+
+  // App
+  appVersionCode = 1
+  appVersionName= "1.0"
+
   //Android
   androidBuildToolsVersion = "25.0.2"
   androidMinSdkVersion = 16
   androidTargetSdkVersion = 25
   androidCompileSdkVersion = 25
+
+
 
   // Android Libraries
   supportLibraryVersion = '25.2.0'
@@ -65,7 +72,6 @@ ext {
       javaxAnnotation:    "javax.annotation:jsr250-api:${javaxAnnotationVersion}",
       javaxInject:        "javax.inject:javax.inject:${javaxInjectVersion}",
       rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
-      arrow:              "com.fernandocejas:arrow:${arrowVersion}"
   ]
 
   domainTestDependencies = [

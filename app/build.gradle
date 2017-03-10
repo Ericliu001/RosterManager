@@ -7,8 +7,8 @@ android {
         applicationId "com.example.ericliu.rostermanager"
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.ext.appVersionCode
+        versionName rootProject.ext.appVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -23,7 +23,6 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
 
     compile project(':domain')
-    compile project(':data')
 
     compile appDependencies.appCompact
     compile appDependencies.supportLib
