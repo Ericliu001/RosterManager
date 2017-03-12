@@ -1,4 +1,4 @@
-package com.example.ericliu.rostermanager;
+package com.example.ericliu.rostermanager.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 
 import javax.inject.Inject;

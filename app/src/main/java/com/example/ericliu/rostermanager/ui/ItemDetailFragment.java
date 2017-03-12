@@ -1,4 +1,4 @@
-package com.example.ericliu.rostermanager;
+package com.example.ericliu.rostermanager.ui;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dummy.DummyContent;
 
 /**

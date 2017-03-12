@@ -1,6 +1,6 @@
 package com.example.ericliu.rostermanager.dagger;
 
-import com.example.ericliu.rostermanager.BaseActivity;
+import com.example.ericliu.rostermanager.ui.BaseActivity;
 
 import javax.inject.Singleton;
 

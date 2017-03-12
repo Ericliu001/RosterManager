@@ -4,7 +4,7 @@
                                                  android:layout_width="match_parent"
                                                  android:layout_height="match_parent"
                                                  android:fitsSystemWindows="true"
-                                                 tools:context="com.example.ericliu.rostermanager.ItemDetailActivity"
+                                                 tools:context="com.example.ericliu.rostermanager.ui.ItemDetailActivity"
                                                  tools:ignore="MergeRootFrame">
 
     <android.support.design.widget.AppBarLayout

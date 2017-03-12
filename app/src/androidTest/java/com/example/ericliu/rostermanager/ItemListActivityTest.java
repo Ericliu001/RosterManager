@@ -6,6 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 
 import com.example.data.entity.BusinessInfo;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
+import com.example.ericliu.rostermanager.ui.ItemListActivity;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -36,7 +37,8 @@ public class ItemListActivityTest {
 
     @Before
     public void setUp() throws Exception {
-        businessInfoService = new  Retrofit.Builder().baseUrl(PRODUCTION_API_URL)
+        businessInfoService = new  Retrofit.Builder()
+                .baseUrl(PRODUCTION_API_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(BusinessInfoService.class);

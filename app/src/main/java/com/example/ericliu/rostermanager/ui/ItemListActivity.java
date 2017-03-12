@@ -1,4 +1,4 @@
-package com.example.ericliu.rostermanager;
+package com.example.ericliu.rostermanager.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dummy.DummyContent;
 
 import java.util.List;

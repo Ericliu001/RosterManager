@@ -8,6 +8,8 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.HttpUrl;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by ericliu on 10/3/17.
@@ -28,6 +30,8 @@ public final class ApiModule {
     Retrofit provideRetrofit() {
         return new Retrofit.Builder() //
                 .baseUrl(PRODUCTION_API_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 

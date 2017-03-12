@@ -1,4 +1,4 @@
-package com.example.ericliu.rostermanager;
+package com.example.ericliu.rostermanager.app;
 
 import android.app.Application;
 
