@@ -2,6 +2,7 @@ package com.example.ericliu.rostermanager.dagger;
 
 import com.example.data.repository.BusinessInfoRepository;
 import com.example.data.repository.ShiftRepository;
+import com.example.presentation.AndroidWapper;
 import com.example.presentation.presenter.ItemListActivityPresenter;
 
 import dagger.Module;
@@ -15,8 +16,8 @@ import dagger.Provides;
 public class PresenterModule {
 
     @Provides @PerActivity
-    public ItemListActivityPresenter provideItemListActivityPresenter(BusinessInfoRepository businessInfoRepository
+    public ItemListActivityPresenter provideItemListActivityPresenter(AndroidWapper androidWapper, BusinessInfoRepository businessInfoRepository
             , ShiftRepository shiftRepository) {
-        return new ItemListActivityPresenter(businessInfoRepository, shiftRepository);
+        return new ItemListActivityPresenter(androidWapper, businessInfoRepository, shiftRepository);
     }
 }

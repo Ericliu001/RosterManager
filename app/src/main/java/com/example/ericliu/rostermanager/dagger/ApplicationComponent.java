@@ -4,6 +4,7 @@ import com.example.data.repository.BusinessInfoRepository;
 import com.example.data.repository.ShiftRepository;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 import com.example.ericliu.rostermanager.data.api.ShiftService;
+import com.example.presentation.AndroidWapper;
 
 import javax.inject.Singleton;
 
@@ -14,11 +15,13 @@ import dagger.Component;
  */
 
 @Singleton // Constraints this component to one-per-application or unscoped bindings.
-@Component(modules = {ApiModule.class, RepoModule.class})
+@Component(modules = {ApplicationModule.class, ApiModule.class, RepoModule.class})
 public interface ApplicationComponent {
     BusinessInfoService businessInfoService();
     ShiftService shiftService();
 
     BusinessInfoRepository businessInfoRepository();
     ShiftRepository shiftRepository();
+
+    AndroidWapper androidWapper();
 }

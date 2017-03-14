@@ -4,34 +4,48 @@ import com.example.data.entity.BusinessInfo;
 import com.example.data.entity.FinishedShift;
 import com.example.data.repository.BusinessInfoRepository;
 import com.example.data.repository.ShiftRepository;
+import com.example.presentation.AndroidWapper;
 import com.example.presentation.view.ItemListActivityView;
 
 import java.util.List;
 
 import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by ericliu on 14/3/17.
  */
 
-public class ItemListActivityPresenter extends BasePresenter<ItemListActivityView>{
+public class ItemListActivityPresenter extends BasePresenter<ItemListActivityView> {
 
+    private AndroidWapper androidWapper;
     private final BusinessInfoRepository businessInfoRepository;
     private final ShiftRepository shiftRepository;
     private DisposableObserver<BusinessInfo> businessInfoDisposableObserver;
     private DisposableObserver<List<FinishedShift>> shiftObserver;
 
-    public ItemListActivityPresenter(BusinessInfoRepository businessInfoRepository
-                                    , ShiftRepository shiftRepository) {
+    public ItemListActivityPresenter(AndroidWapper androidWapper, BusinessInfoRepository businessInfoRepository
+            , ShiftRepository shiftRepository) {
+        this.androidWapper = androidWapper;
         this.businessInfoRepository = businessInfoRepository;
         this.shiftRepository = shiftRepository;
     }
 
+    @Override
     public void onViewCreated(final boolean isConfigurationChange) {
+    }
+
+    @Override
+    public void onResume() {
         businessInfoDisposableObserver = new DisposableObserver<BusinessInfo>() {
             @Override
             public void onNext(final BusinessInfo businessInfo) {
-                view.showBusinessInfo();
+                if (businessInfo.name != null) {
+                    view.showBusinessName(businessInfo.name);
+                }
+                if (businessInfo.logo != null) {
+                    view.showBusinessLogo(businessInfo.logo);
+                }
             }
 
             @Override
@@ -44,7 +58,7 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
 
             }
         };
-        businessInfoRepository.getBusinessInfo().subscribe(businessInfoDisposableObserver);
+        businessInfoRepository.getBusinessInfo().observeOn(androidWapper.getMainThreadScheduler()).subscribeOn(Schedulers.io()).subscribe(businessInfoDisposableObserver);
 
         shiftObserver = new DisposableObserver<List<FinishedShift>>() {
             @Override
@@ -53,7 +67,7 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
             }
 
             @Override
-            public void onError(final   Throwable e) {
+            public void onError(final Throwable e) {
 
             }
 
@@ -62,7 +76,7 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
 
             }
         };
-        shiftRepository.getPreviousShifts().subscribe(shiftObserver);
+        shiftRepository.getPreviousShifts().observeOn(androidWapper.getMainThreadScheduler()).subscribeOn(Schedulers.io()).subscribe(shiftObserver);
     }
 
 
@@ -72,7 +86,4 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
         shiftObserver.dispose();
     }
 
-    public void doSomething() {
-        view.showBusinessInfo();
-    }
 }

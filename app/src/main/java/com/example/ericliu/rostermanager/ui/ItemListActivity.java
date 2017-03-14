@@ -13,6 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
 import com.example.ericliu.rostermanager.dummy.DummyContent;
@@ -92,11 +96,6 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
     }
 
-    @Override
-    public void showBusinessInfo() {
-
-    }
-
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -164,5 +163,23 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
+    }
+
+
+    @Override
+    public void showBusinessName(final String name) {
+        getSupportActionBar().setTitle(name);
+    }
+
+    @Override
+    public void showBusinessLogo(final String logoUrl) {
+        Glide.with(this).load(logoUrl).into(new SimpleTarget<GlideDrawable>() {
+            @Override
+            public void onResourceReady(final GlideDrawable resource, final GlideAnimation<? super GlideDrawable> glideAnimation) {
+                getSupportActionBar().setLogo(resource);
+            }
+        });
+
+//        getSupportActionBar().setLogo();
     }
 }

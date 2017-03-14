@@ -5,5 +5,7 @@ package com.example.presentation.view;
  */
 
 public interface ItemListActivityView {
-    void showBusinessInfo();
+    void showBusinessName(String name);
+
+    void showBusinessLogo(String logoUrl);
 }
