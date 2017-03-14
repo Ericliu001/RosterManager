@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.ericliu.rostermanager.R;
+import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 
 import javax.inject.Inject;
@@ -22,6 +23,8 @@ import javax.inject.Inject;
  * in a {@link ItemListActivity}.
  */
 public class ItemDetailActivity extends BaseActivity {
+
+
 
     @Inject
     BusinessInfoService businessInfoService;
@@ -74,6 +77,12 @@ public class ItemDetailActivity extends BaseActivity {
                     .commit();
         }
     }
+
+    @Override
+    protected void inject(final BaseActivityComponent component) {
+        component.inject(this);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -1,6 +1,6 @@
 package com.example.ericliu.rostermanager.dagger;
 
-import com.example.ericliu.rostermanager.ui.BaseActivity;
+import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 
 import javax.inject.Singleton;
 
@@ -13,5 +13,5 @@ import dagger.Component;
 @Singleton // Constraints this component to one-per-application or unscoped bindings.
 @Component(modules = ApiModule.class)
 public interface ApplicationComponent {
-    void inject(BaseActivity activity);
+    BusinessInfoService businessInfoService();
 }

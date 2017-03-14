@@ -26,7 +26,7 @@ public class RosterApplication extends Application {
                 .build();
     }
 
-    public ApplicationComponent getApplicationComponent() {
-        return this.applicationComponent;
+    public ApplicationComponent component() {
+        return applicationComponent;
     }
 }

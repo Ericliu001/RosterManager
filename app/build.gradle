@@ -22,7 +22,7 @@ android {
 dependencies {
     def appDependencies = rootProject.ext.appDependencies
 
-    compile project(':domain')
+    compile project(':business')
 
     compile appDependencies.appCompact
     compile appDependencies.supportLib
