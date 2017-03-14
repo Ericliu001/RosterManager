@@ -5,4 +5,7 @@ package com.example.data.entity;
  */
 
 public class Shift {
+    String time;
+    String latitude;
+    String longitude;
 }

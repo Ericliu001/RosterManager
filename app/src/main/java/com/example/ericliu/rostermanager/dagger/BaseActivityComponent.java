@@ -23,7 +23,7 @@ import com.example.ericliu.rostermanager.ui.ItemListActivity;
 import dagger.Component;
 
 @PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
+@Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class, PresenterModule.class})
 public interface BaseActivityComponent {
   void inject(BaseActivity baseActivity);
 

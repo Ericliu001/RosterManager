@@ -1,6 +1,7 @@
 package com.example.usecase;
 
-import com.example.data.entity.Shift;
+import com.example.data.entity.PreviousShift;
+import com.example.data.repository.ShiftRepository;
 
 import java.util.List;
 
@@ -11,9 +12,15 @@ import io.reactivex.Observable;
  */
 
 public class GetListOfPreviousShift implements UseCase {
-    // TODO: 10/3/17 more logic to go in
+
+    private ShiftRepository shiftRepository;
+
+    public GetListOfPreviousShift(ShiftRepository shiftRepository) {
+        this.shiftRepository = shiftRepository;
+    }
+
     @Override
-    public Observable<List<Shift>> execute() {
-        return null;
+    public Observable<List<PreviousShift>> execute() {
+        return shiftRepository.getPreviousShifts();
     }
 }

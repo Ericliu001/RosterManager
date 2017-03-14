@@ -1,6 +1,7 @@
 package com.example.ericliu.rostermanager.dagger;
 
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
+import com.example.ericliu.rostermanager.data.api.ShiftService;
 
 import javax.inject.Singleton;
 
@@ -38,6 +39,11 @@ public final class ApiModule {
     @Provides @Singleton
     BusinessInfoService provideBusinessInfoService(Retrofit retrofit) {
         return retrofit.create(BusinessInfoService.class);
+    }
+
+    @Provides @Singleton
+    ShiftService provideShiftService(Retrofit retrofit) {
+        return retrofit.create(ShiftService.class);
     }
 
 }
