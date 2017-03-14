@@ -5,4 +5,13 @@ package com.example.data.entity;
  */
 
 public class PreviousShift {
+    String id;
+    String start;
+    String end;
+    String startLatitude;
+    String startLongitude;
+    String endLatitude;
+    String endLongitude;
+    String image;
+
 }
