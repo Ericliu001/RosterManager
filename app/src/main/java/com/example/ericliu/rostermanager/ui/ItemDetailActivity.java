@@ -13,6 +13,7 @@ import android.view.View;
 import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
+import com.example.presentation.presenter.BasePresenter;
 
 import javax.inject.Inject;
 
@@ -81,6 +82,11 @@ public class ItemDetailActivity extends BaseActivity {
     @Override
     protected void inject(final BaseActivityComponent component) {
         component.inject(this);
+    }
+
+    @Override
+    protected BasePresenter attachPresenter() {
+        return null;
     }
 
 

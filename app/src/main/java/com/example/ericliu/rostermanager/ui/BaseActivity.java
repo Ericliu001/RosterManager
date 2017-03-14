@@ -9,6 +9,7 @@ import com.example.ericliu.rostermanager.dagger.ActivityModule;
 import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
 import com.example.ericliu.rostermanager.dagger.DaggerBaseActivityComponent;
 import com.example.ericliu.rostermanager.dagger.PresenterModule;
+import com.example.presentation.presenter.BasePresenter;
 
 /**
  * Created by ericliu on 10/3/17.
@@ -16,6 +17,7 @@ import com.example.ericliu.rostermanager.dagger.PresenterModule;
 
 public abstract class BaseActivity extends AppCompatActivity {
     private BaseActivityComponent component;
+    private BasePresenter basePresenter;
 
     BaseActivityComponent component() {
         if (component == null) {
@@ -33,8 +35,41 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         component().inject(this);
         inject(component());
+        basePresenter = attachPresenter();
+        if (basePresenter != null) {
+            basePresenter.onCreate(this);
+            basePresenter.onViewCreated(savedInstanceState != null);
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (basePresenter != null) {
+            basePresenter.onResume();
+        }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (basePresenter != null) {
+            basePresenter.onPause();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (basePresenter != null) {
+            basePresenter.onViewDestroyed();
+        }
+        super.onDestroy();
     }
 
     protected abstract void inject(BaseActivityComponent component);
+
+    protected abstract BasePresenter attachPresenter();
 
 }

@@ -16,7 +16,9 @@ import android.widget.TextView;
 import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
 import com.example.ericliu.rostermanager.dummy.DummyContent;
-import com.example.presenter.ItemListActivityPresenter;
+import com.example.presentation.presenter.BasePresenter;
+import com.example.presentation.presenter.ItemListActivityPresenter;
+import com.example.presentation.view.ItemListActivityView;
 
 import java.util.List;
 
@@ -30,7 +32,7 @@ import javax.inject.Inject;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ItemListActivity extends BaseActivity {
+public class ItemListActivity extends BaseActivity implements ItemListActivityView{
 
     @Inject
     ItemListActivityPresenter presenter;
@@ -41,6 +43,8 @@ public class ItemListActivity extends BaseActivity {
      * device.
      */
     private boolean mTwoPane;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +82,19 @@ public class ItemListActivity extends BaseActivity {
         component.inject(this);
     }
 
+    @Override
+    protected BasePresenter attachPresenter() {
+        return presenter;
+    }
+
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+    }
+
+    @Override
+    public void dummyCall() {
+
     }
 
     public class SimpleItemRecyclerViewAdapter

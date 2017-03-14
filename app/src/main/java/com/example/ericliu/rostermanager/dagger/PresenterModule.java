@@ -2,7 +2,7 @@ package com.example.ericliu.rostermanager.dagger;
 
 import com.example.data.repository.BusinessInfoRepository;
 import com.example.data.repository.ShiftRepository;
-import com.example.presenter.ItemListActivityPresenter;
+import com.example.presentation.presenter.ItemListActivityPresenter;
 
 import dagger.Module;
 import dagger.Provides;
