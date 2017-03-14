@@ -64,6 +64,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         if (basePresenter != null) {
             basePresenter.onViewDestroyed();
+            basePresenter.onDestroy();
         }
         super.onDestroy();
     }

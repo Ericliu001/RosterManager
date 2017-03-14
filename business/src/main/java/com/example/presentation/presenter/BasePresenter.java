@@ -20,4 +20,6 @@ public abstract class BasePresenter<V> {
         view = (V) DummyViewGenerator.createDummyInstance(this);
     }
 
+    public void onDestroy(){}
+
 }

@@ -5,5 +5,5 @@ package com.example.presentation.view;
  */
 
 public interface ItemListActivityView {
-    void dummyCall();
+    void showBusinessInfo();
 }

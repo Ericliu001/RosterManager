@@ -93,7 +93,7 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
     }
 
     @Override
-    public void dummyCall() {
+    public void showBusinessInfo() {
 
     }
 
