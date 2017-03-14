@@ -5,7 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.example.data.entity.BusinessInfo;
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.entity.Shift;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 import com.example.ericliu.rostermanager.data.api.ShiftService;
@@ -91,8 +91,8 @@ public class ItemListActivityTest {
         shiftService.startAShift(shift);
         shiftService.endAShift(shift);
 
-        Observable<List<PreviousShift>> observable = shiftService.getPreviousShifts();
-        TestObserver<List<PreviousShift>> testObserver = new TestObserver<>();
+        Observable<List<FinishedShift>> observable = shiftService.getPreviousShifts();
+        TestObserver<List<FinishedShift>> testObserver = new TestObserver<>();
         observable.subscribe(testObserver);
         testObserver.assertNoErrors();
     }

@@ -1,7 +1,7 @@
 package com.example.presentation.presenter;
 
 import com.example.data.entity.BusinessInfo;
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.repository.BusinessInfoRepository;
 import com.example.data.repository.ShiftRepository;
 import com.example.presentation.view.ItemListActivityView;
@@ -19,7 +19,7 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
     private final BusinessInfoRepository businessInfoRepository;
     private final ShiftRepository shiftRepository;
     private DisposableObserver<BusinessInfo> businessInfoDisposableObserver;
-    private DisposableObserver<List<PreviousShift>> shiftObserver;
+    private DisposableObserver<List<FinishedShift>> shiftObserver;
 
     public ItemListActivityPresenter(BusinessInfoRepository businessInfoRepository
                                     , ShiftRepository shiftRepository) {
@@ -46,9 +46,9 @@ public class ItemListActivityPresenter extends BasePresenter<ItemListActivityVie
         };
         businessInfoRepository.getBusinessInfo().subscribe(businessInfoDisposableObserver);
 
-        shiftObserver = new DisposableObserver<List<PreviousShift>>() {
+        shiftObserver = new DisposableObserver<List<FinishedShift>>() {
             @Override
-            public void onNext(final List<PreviousShift> previousShifts) {
+            public void onNext(final List<FinishedShift> finishedShifts) {
 
             }
 

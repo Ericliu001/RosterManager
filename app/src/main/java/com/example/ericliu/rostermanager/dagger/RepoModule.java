@@ -5,7 +5,7 @@ import com.example.data.repository.ShiftRepository;
 import com.example.ericliu.rostermanager.data.api.BusinessInfoService;
 import com.example.ericliu.rostermanager.data.api.ShiftService;
 import com.example.ericliu.rostermanager.data.repository.BusinessInfoRepoImpl;
-import com.example.ericliu.rostermanager.data.repository.ShiftRemoImpl;
+import com.example.ericliu.rostermanager.data.repository.ShiftRepoImpl;
 
 import javax.inject.Singleton;
 
@@ -25,7 +25,7 @@ public class RepoModule {
 
     @Provides @Singleton
     public ShiftRepository provideShiftRepository(ShiftService shiftService) {
-        return new ShiftRemoImpl(shiftService);
+        return new ShiftRepoImpl(shiftService);
     }
 
 

@@ -1,6 +1,6 @@
 package com.example.usecase;
 
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.repository.ShiftRepository;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class GetListOfPreviousShift implements UseCase {
     }
 
     @Override
-    public Observable<List<PreviousShift>> execute() {
+    public Observable<List<FinishedShift>> execute() {
         return shiftRepository.getPreviousShifts();
     }
 }

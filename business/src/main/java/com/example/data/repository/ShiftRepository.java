@@ -1,6 +1,6 @@
 package com.example.data.repository;
 
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.entity.Shift;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import io.reactivex.Observable;
 
 public interface ShiftRepository {
 
-    Observable<List<PreviousShift>> getPreviousShifts();
+    Observable<List<FinishedShift>> getPreviousShifts();
 
     Completable startShift(Shift shift);
 

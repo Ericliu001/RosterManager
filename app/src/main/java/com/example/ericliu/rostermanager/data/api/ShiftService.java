@@ -1,6 +1,6 @@
 package com.example.ericliu.rostermanager.data.api;
 
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.entity.Shift;
 
 import java.util.List;
@@ -29,5 +29,5 @@ public interface ShiftService {
 
     @Headers("Authorization:Deputy " + AUTH_SHA1)
     @GET("shifts") //
-    Observable<List<PreviousShift>> getPreviousShifts();
+    Observable<List<FinishedShift>> getPreviousShifts();
 }

@@ -1,6 +1,6 @@
 package com.example.ericliu.rostermanager.data.repository;
 
-import com.example.data.entity.PreviousShift;
+import com.example.data.entity.FinishedShift;
 import com.example.data.entity.Shift;
 import com.example.data.repository.ShiftRepository;
 import com.example.ericliu.rostermanager.data.api.ShiftService;
@@ -14,16 +14,16 @@ import io.reactivex.Observable;
  * Created by ericliu on 14/3/17.
  */
 
-public class ShiftRemoImpl implements ShiftRepository {
+public class ShiftRepoImpl implements ShiftRepository {
 
     private ShiftService shiftService;
 
-    public ShiftRemoImpl(ShiftService shiftService) {
+    public ShiftRepoImpl(ShiftService shiftService) {
         this.shiftService = shiftService;
     }
 
     @Override
-    public Observable<List<PreviousShift>> getPreviousShifts() {
+    public Observable<List<FinishedShift>> getPreviousShifts() {
         return shiftService.getPreviousShifts();
     }
 
