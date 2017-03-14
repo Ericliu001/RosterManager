@@ -1,6 +1,6 @@
 package com.example.ericliu.rostermanager.app;
 
-import com.example.presentation.AndroidWapper;
+import com.example.AndroidWapper;
 
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;

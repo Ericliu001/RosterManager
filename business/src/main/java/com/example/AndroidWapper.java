@@ -1,4 +1,4 @@
-package com.example.presentation;
+package com.example;
 
 import io.reactivex.Scheduler;
 

@@ -1,7 +1,9 @@
 package com.example.ericliu.rostermanager.dagger;
 
+import android.app.Application;
+
+import com.example.AndroidWapper;
 import com.example.ericliu.rostermanager.app.AndroidDependency;
-import com.example.presentation.AndroidWapper;
 
 import javax.inject.Singleton;
 
@@ -13,6 +15,17 @@ import dagger.Provides;
  */
 @Module
 public class ApplicationModule {
+
+    private final Application application;
+
+    public ApplicationModule(final Application application) {
+        this.application = application;
+    }
+
+    @Provides @Singleton
+    public Application provideApplication(){
+        return application;
+    }
 
     @Provides @Singleton
     public AndroidWapper provideAndroidWrapWapper() {

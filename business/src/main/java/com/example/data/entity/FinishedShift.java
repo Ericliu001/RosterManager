@@ -5,13 +5,13 @@ package com.example.data.entity;
  */
 
 public class FinishedShift {
-    String id;
-    String start;
-    String end;
-    String startLatitude;
-    String startLongitude;
-    String endLatitude;
-    String endLongitude;
-    String image;
+    public String id;
+    public String start;
+    public String end;
+    public String startLatitude;
+    public String startLongitude;
+    public String endLatitude;
+    public String endLongitude;
+    public String image;
 
 }

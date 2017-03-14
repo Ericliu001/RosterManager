@@ -8,4 +8,12 @@ public class Shift {
     public String time;
     public String latitude;
     public String longitude;
+
+
+    public Shift() {
+    }
+
+    public Shift(final String time) {
+        this.time = time;
+    }
 }

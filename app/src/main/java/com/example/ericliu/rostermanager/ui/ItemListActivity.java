@@ -17,13 +17,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.example.data.entity.FinishedShift;
 import com.example.ericliu.rostermanager.R;
 import com.example.ericliu.rostermanager.dagger.BaseActivityComponent;
-import com.example.ericliu.rostermanager.dummy.DummyContent;
 import com.example.presentation.presenter.BasePresenter;
 import com.example.presentation.presenter.ItemListActivityPresenter;
 import com.example.presentation.view.ItemListActivityView;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,7 +37,7 @@ import javax.inject.Inject;
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-public class ItemListActivity extends BaseActivity implements ItemListActivityView{
+public class ItemListActivity extends BaseActivity implements ItemListActivityView {
 
     @Inject
     ItemListActivityPresenter presenter;
@@ -47,13 +48,16 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
      * device.
      */
     private boolean mTwoPane;
+    private List<FinishedShift> finishedShiftList = Collections.emptyList();
 
+    private ViewGroup currentShiftContainer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+        currentShiftContainer = (ViewGroup) findViewById(R.id.currentShiftContainer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,8 +67,10 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Shift Started!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                presenter.onStartShiftButtonClick();
             }
         });
 
@@ -93,17 +99,11 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
 
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter());
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-
-        private final List<DummyContent.DummyItem> mValues;
-
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
-            mValues = items;
-        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -114,9 +114,9 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mItem = finishedShiftList.get(position);
+            holder.mIdView.setText(finishedShiftList.get(position).id);
+            holder.mContentView.setText(finishedShiftList.get(position).start);
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -142,14 +142,14 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return finishedShiftList.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public FinishedShift mItem;
 
             public ViewHolder(View view) {
                 super(view);
@@ -179,7 +179,15 @@ public class ItemListActivity extends BaseActivity implements ItemListActivityVi
                 getSupportActionBar().setLogo(resource);
             }
         });
+    }
 
-//        getSupportActionBar().setLogo();
+    @Override
+    public void showFinishedShiftsList(final List<FinishedShift> finishedShifts) {
+        this.finishedShiftList = finishedShifts;
+    }
+
+    @Override
+    public void showStartedShiftLayoutWithProgressBar() {
+        currentShiftContainer.setVisibility(View.VISIBLE);
     }
 }
